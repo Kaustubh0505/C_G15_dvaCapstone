@@ -85,14 +85,6 @@ The dataset includes information about restaurants such as ratings, engagement, 
 - Online ordering has a significant effect on ratings  
 - Table booking is linked to higher engagement  
 
-### Predictive Modeling
-
-**Random Forest model results:**
-
-- Rating prediction accuracy (R²): around 0.80  
-- Engagement prediction accuracy (R²): around 0.91  
-
-These results show strong prediction performance.
 
 ---
 
