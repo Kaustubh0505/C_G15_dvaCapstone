@@ -161,13 +161,3 @@ Features include:
 * Expand to multiple markets
 
 ---
-
-## Team Contributions
-
-Nistha Gupta Data analysis and exploratory analysis
-Adil Mirza Data cleaning and preprocessing
-Tanish Yadav Statistical analysis
-Tejas Tyagi Dashboard development
-Kaustaub Report writing
-Krishiv Visualization and presentation
-
