@@ -1,155 +1,183 @@
-# Zomato Restaurant Analytics
+# NST DVA Capstone 2 - Zomato Restaurant Analytics
 
-## Executive Summary
+## Project Overview
 
-This project analyzes a large restaurant dataset to understand what affects customer ratings, engagement, and pricing. It uses data cleaning, analysis, statistics, and machine learning to generate useful insights for better decision-making in the food industry.
+| Field | Details |
+|---|---|
+| **Project Title** | Zomato Restaurant Analytics |
+| **Sector** | Food & Beverage / Restaurant Industry |
+| **Team ID** | C_G15 |
+| **Section** | C |
+| **Faculty Mentor** | Satyaki Sir |
+| **Institute** | Newton School of Technology |
+| **Submission Date** | 28-04-2026 |
+
+--- 
+
+### Team Members
+
+| Role | Name | GitHub |
+|---|---|---|
+| Project Lead | Kaustubh Hiwanj | `[GitHub](https://github.com/kaustubh0505` |
+| Data Lead | _Name_ | `[link]` |
+| Visualization Lead | _Name_ | `[link]` |
+| Analysis Lead | _Name_ | `[link]` |
+| ETL Lead | _Name_ | `[link]` |
+| Strategy Lead | _Name_ | `[link]` |
+| PPT and Quality Lead | _Name_ | `[link]` |
 
 ---
 
-## Problem Statement
+## Business Problem
 
-On restaurant platforms, only a few restaurants get most of the attention from customers. This makes it hard for many other restaurants to grow and be noticed.
+On restaurant platforms like Zomato, only a few restaurants capture most of the customer attention, making it challenging for mid-level and new restaurants to grow and get noticed. This project analyzes a comprehensive dataset to understand the key drivers of customer ratings, engagement, and pricing. The insights aim to guide strategies for better visibility and optimize platform efficiency in the highly competitive food industry.
 
-This project aims to find the key factors that affect restaurant performance and improve overall platform efficiency.
+**Core Business Question**
 
----
+> What are the primary factors that influence restaurant ratings and customer engagement on the Zomato platform?
 
-## Objectives
+**Decision Supported**
 
-- Clean and prepare the data properly  
-- Study patterns using exploratory data analysis  
-- Test relationships using statistical methods  
-- Build models to predict ratings and engagement  
-- Group restaurants into meaningful segments  
-- Create an interactive dashboard for insights  
+> Enable restaurants to decide on adopting digital features (like online ordering and table booking) and help platform managers develop strategies to redistribute visibility towards mid-market restaurants.
 
 ---
 
 ## Dataset
 
-The dataset includes information about restaurants such as ratings, engagement, pricing, and services.
+| Attribute | Details |
+|---|---|
+| **Source Name** | Zomato |
+| **Direct Access Link** | (https://www.kaggle.com/datasets/rajeshrampure/zomato-dataset) |
+| **Row Count** | 51,717 |
+| **Column Count** | 17 |
+| **Time Period Covered** | _To be filled by team_ |
+| **Format** | CSV |
 
-- **Total records:** 51717  
-- **Total features:** 17  
-- **Unique restaurants:** 8792  
+**Key Columns Used**
 
-### Key Variables
+| Column Name | Description | Role in Analysis |
+|---|---|---|
+| `rate` | Average customer rating | Key KPI / Target Variable |
+| `votes` | Number of customer reviews | Used for Engagement KPI |
+| `approx_cost` | Cost for two people | Used for Pricing Segmentation |
+| `online_order` | Whether online ordering is available | Used for Digital Readiness Analysis |
+| `book_table` | Whether table booking is available | Used for Digital Readiness Analysis |
+| `location` | Restaurant area | Used for Geographic Segmentation |
+| `rest_type` | Type of restaurant | Used for Categorization |
+| `cuisines` | Types of food offered | Used for Variety Analysis |
 
-- **rate:** average customer rating  
-- **votes:** number of reviews  
-- **approx_cost:** cost for two people  
-- **online_order:** whether online ordering is available  
-- **book_table:** whether table booking is available  
-- **location:** restaurant area  
-- **rest_type:** type of restaurant  
-- **cuisines:** types of food offered  
-
----
-
-## Methodology
-
-### Data Preparation
-
-- Missing ratings filled using median values  
-- Missing cost values filled using group averages  
-- Incorrect records removed  
-- Data formats standardized  
-
-### Feature Engineering
-
-- Created pricing groups based on cost  
-- Defined high engagement using vote distribution  
-- Defined digital readiness based on services  
-
-### Outlier Handling
-
-- Extreme values identified using statistical methods  
-- Outliers kept to maintain real-world data  
-- Log transformation used during modeling  
+For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionary.md).
 
 ---
 
-## Exploratory Data Analysis
+## KPI Framework
 
-- Ratings do not vary much across restaurants  
-- Customer engagement is uneven (skewed)  
-- Online ordering is linked to higher ratings  
-- Table booking is linked to higher cost and engagement  
+| KPI | Definition | Formula / Computation |
+|---|---|---|
+| Average Rating | The mean customer rating for a restaurant | Mean of `rate` column |
+| Total Engagement | The level of customer interaction | Sum of `votes` |
+| Average Cost for Two | Expected spend for two people | Mean of `approx_cost` |
+| Digital Readiness | Availability of digital services | Presence of `online_order` and `book_table` |
 
----
-
-## Statistical Analysis
-
-### Hypothesis Testing
-
-- Online ordering has a significant effect on ratings  
-- Table booking is linked to higher engagement  
-
+Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `notebooks/05_final_load_prep.ipynb`.
 
 ---
 
-## Market Segmentation
+## Tableau Dashboard
 
-Three groups of restaurants were identified:
+| Item | Details |
+|---|---|
+| **Dashboard URL** | [Tableau Public Link](https://public.tableau.com/views/Book1_17772634695820/HOME?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link) |
+| **Executive View** | High-level summary of KPIs, overall ratings, and engagement distributions |
+| **Operational View** | Detailed breakdown of restaurants by location, category comparisons, and pricing analysis |
+| **Main Filters** | Interactive filters for location, cost, restaurant type, and digital features |
 
-- **Budget:** low cost, low engagement  
-- **Mid-market:** moderate performance  
-- **Premium:** high cost, high engagement  
-
----
-
-## Dashboard
-
-An interactive dashboard was created using Tableau.
-
-### Features
-
-- Key performance indicators (KPIs)  
-- Category comparisons  
-- Pricing analysis  
-- Interactive filters  
+Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) and document the public links in [`tableau/dashboard_links.md`](tableau/dashboard_links.md).
 
 ---
 
 ## Key Insights
 
-- Ratings are very similar across most restaurants  
-- Most customer attention goes to a few restaurants  
-- Digital features improve performance  
-- Premium restaurants get higher engagement  
-- Many restaurants are not using digital features  
+1. **Rating Uniformity:** Ratings do not vary significantly across most restaurants.
+2. **Skewed Engagement:** Customer engagement is highly uneven, with most attention going to a few top restaurants.
+3. **Digital Edge:** Offering online ordering is strongly linked to higher ratings.
+4. **Premium Features:** Table booking availability is associated with higher costs and greater engagement.
+5. **Market Segments:** The market is divided into Budget (low cost/engagement), Mid-market (moderate performance), and Premium (high cost/engagement).
+6. **Feature Underutilization:** Many restaurants are currently not utilizing digital features to their full potential.
+7. **Premium Performance:** Premium segment restaurants generally receive disproportionately higher engagement.
+8. **Cost vs Engagement:** Higher `approx_cost` often correlates with services like table booking, which in turn drive higher customer votes.
 
 ---
 
 ## Recommendations
 
-- Help mid-level restaurants get more visibility  
-- Encourage use of online ordering  
-- Focus strategies on premium segments  
-- Target marketing in high-demand areas  
+| # | Insight | Recommendation | Expected Impact |
+|---|---|---|---|
+| 1 | Skewed Engagement | Implement platform strategies to help mid-level restaurants get more visibility | Better distribution of customer attention across the platform |
+| 2 | Digital Edge | Actively encourage restaurants to adopt online ordering | 8 to 15 percent increase in customer engagement |
+| 3 | Feature Underutilization & Premium Focus | Focus marketing and sales strategies on premium segments and high-demand areas | 7 to 10 percent possible revenue growth |
 
 ---
 
-## Business Impact
+## Repository Structure
 
-- 8 to 15 percent increase in engagement  
-- 7 to 10 percent possible revenue growth  
-- Better distribution of customer attention  
+```text
+C_G15_dvaCapstone/
+|
+|-- README.md
+|
+|-- data/
+|   |-- raw/                         # Original dataset (never edited)
+|   `-- processed/                   # Cleaned output from ETL pipeline
+|
+|-- notebooks/
+|   |-- 01_extraction.ipynb
+|   |-- 02_cleaning.ipynb
+|   |-- 03_eda.ipynb
+|   |-- 04_statistical_analysis.ipynb
+|   `-- 05_final_load_prep.ipynb
+|
+|-- scripts/
+|   `-- etl_pipeline.py
+|
+|-- tableau/
+|   |-- screenshots/
+|   `-- dashboard_links.md
+|
+|-- reports/
+|   |-- README.md
+|   |-- project_report_template.md
+|   `-- presentation_outline.md
+|
+|-- docs/
+|   `-- data_dictionary.md
+|
+|-- DVA-oriented-Resume/
+`-- DVA-focused-Portfolio/
+```
 
 ---
 
-## Limitations
 
-- No time-based data for trend analysis  
-- Missing values were estimated  
-- No customer-level behavior data  
-- Based on static dataset only  
+## Tech Stack
+
+| Tool | Status | Purpose |
+|---|---|---|
+| Python + Jupyter Notebooks | Mandatory | ETL, cleaning, analysis, and KPI computation |
+| Google Colab | Supported | Cloud notebook execution environment |
+| Tableau Public | Mandatory | Dashboard design, publishing, and sharing |
+| GitHub | Mandatory | Version control, collaboration, contribution audit |
 
 ---
 
-## Future Work
+**Presentation Deck**
 
-- Add time-based analysis  
-- Build recommendation systems  
-- Create real-time data pipelines  
-- Expand analysis to more markets  
+- [ ] Final presentation exported as PDF into `reports/`
+- [ ] Title slide through recommendations, impact, limitations, and next steps
+
+**Individual Assets**
+
+- [ ] DVA-oriented resume updated to include this capstone
+- [ ] Portfolio link or project case study added
+
+---
