@@ -18,7 +18,7 @@
 
 | Role | Name | GitHub |
 |---|---|---|
-| Project Lead | Kaustubh Hiwanj | `[GitHub](https://github.com/kaustubh0505` |
+| Project Lead | Kaustubh Hiwanj | `[GitHub](https://github.com/kaustubh0505)` |
 | Data Lead | _Name_ | `[link]` |
 | Visualization Lead | _Name_ | `[link]` |
 | Analysis Lead | _Name_ | `[link]` |
@@ -145,7 +145,6 @@ C_G15_dvaCapstone/
 |   `-- dashboard_links.md
 |
 |-- reports/
-|   |-- README.md
 |   |-- project_report_template.md
 |   `-- presentation_outline.md
 |
