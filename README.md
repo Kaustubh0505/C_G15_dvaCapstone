@@ -18,7 +18,7 @@
 
 | Role | Name | GitHub |
 |---|---|---|
-| Project Lead | Kaustubh Hiwanj | `[GitHub](https://github.com/kaustubh0505)` |
+| Project Lead | Kaustubh Hiwanj | [GitHub](https://github.com/kaustubh0505) |
 | Data Lead | _Name_ | `[link]` |
 | Visualization Lead | _Name_ | `[link]` |
 | Analysis Lead | _Name_ | `[link]` |
