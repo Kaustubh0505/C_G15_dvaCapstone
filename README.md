@@ -19,12 +19,13 @@
 | Role | Name | GitHub |
 |---|---|---|
 | Project Lead | Kaustubh Hiwanj | [GitHub](https://github.com/kaustubh0505) |
-| Data Lead | _Name_ | `[link]` |
-| Visualization Lead | _Name_ | `[link]` |
-| Analysis Lead | _Name_ | `[link]` |
-| ETL Lead | _Name_ | `[link]` |
-| Strategy Lead | _Name_ | `[link]` |
-| PPT and Quality Lead | _Name_ | `[link]` |
+| Data Lead | Nistha Gupta | [GitHub](https://github.com/nishtha-09-gupta) |
+| Visualization Lead | Adil Mirza | [GitHub](https://github.com/adilmirza975) |
+| Analysis Lead | Krishiv Gupta | [GitHub](https://github.com/krishiv274) |
+| ETL Lead | Kaustubh Hiwanj | [GitHub](https://github.com/kaustubh0505) |
+| Strategy Lead | Nishta Gupta | [GitHub](https://github.com/nishtha-09-gupta) |
+| PPT | Tejas Tyagi | [GitHub](https://github.com/Tejas10108) |
+| Project Report | Tanish Yadav | [GitHub](https://github.com/tanishrao13) |
 
 ---
 
@@ -34,11 +35,11 @@ On restaurant platforms like Zomato, only a few restaurants capture most of the 
 
 **Core Business Question**
 
-> What are the primary factors that influence restaurant ratings and customer engagement on the Zomato platform?
+> Which types of restaurants (based on location, cuisine, and cost) achieve higher ratings and customer engagement (votes), and how does this vary across locations?
 
 **Decision Supported**
 
-> Enable restaurants to decide on adopting digital features (like online ordering and table booking) and help platform managers develop strategies to redistribute visibility towards mid-market restaurants.
+> Help restaurant owners optimize pricing, adopt digital features (online ordering & table booking), and enable platforms to improve visibility distribution across restaurant segments.
 
 ---
 
@@ -46,27 +47,12 @@ On restaurant platforms like Zomato, only a few restaurants capture most of the 
 
 | Attribute | Details |
 |---|---|
-| **Source Name** | Zomato |
-| **Direct Access Link** | (https://www.kaggle.com/datasets/rajeshrampure/zomato-dataset) |
+| **Source Name** | Zomato Bangalore Restaurants Dataset |
+| **Direct Access Link** | [Data Link](https://www.kaggle.com/datasets/rajeshrampure/zomato-dataset) |
 | **Row Count** | 51,717 |
-| **Column Count** | 17 |
-| **Time Period Covered** | _To be filled by team_ |
+| **Column Count** | 17 (including engineered features) |
+| **Time Period Covered** | Not explicitly available (cross-sectional dataset) |
 | **Format** | CSV |
-
-**Key Columns Used**
-
-| Column Name | Description | Role in Analysis |
-|---|---|---|
-| `rate` | Average customer rating | Key KPI / Target Variable |
-| `votes` | Number of customer reviews | Used for Engagement KPI |
-| `approx_cost` | Cost for two people | Used for Pricing Segmentation |
-| `online_order` | Whether online ordering is available | Used for Digital Readiness Analysis |
-| `book_table` | Whether table booking is available | Used for Digital Readiness Analysis |
-| `location` | Restaurant area | Used for Geographic Segmentation |
-| `rest_type` | Type of restaurant | Used for Categorization |
-| `cuisines` | Types of food offered | Used for Variety Analysis |
-
-For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionary.md).
 
 ---
 
@@ -74,12 +60,17 @@ For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionar
 
 | KPI | Definition | Formula / Computation |
 |---|---|---|
-| Average Rating | The mean customer rating for a restaurant | Mean of `rate` column |
-| Total Engagement | The level of customer interaction | Sum of `votes` |
-| Average Cost for Two | Expected spend for two people | Mean of `approx_cost` |
-| Digital Readiness | Availability of digital services | Presence of `online_order` and `book_table` |
+| Average Rating | Overall customer satisfaction level | Mean of `rate` |
+| Total Engagement | Customer interaction and popularity | Sum of `votes` |
+| Average Cost for Two | Pricing level indicator | Mean of `approx_cost` |
+| Digital Readiness | Adoption of platform features | `online_order` + `book_table` |
 
-Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `notebooks/05_final_load_prep.ipynb`.
+**Actual KPI Values:**
+
+- Average Rating: **3.70**
+- Total Votes: **14.67M**
+- Average Cost for Two: **₹554.4**
+- Total Restaurants: **8,792**
 
 ---
 
@@ -88,24 +79,31 @@ Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `not
 | Item | Details |
 |---|---|
 | **Dashboard URL** | [Tableau Public Link](https://public.tableau.com/views/Book1_17772634695820/HOME?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link) |
-| **Executive View** | High-level summary of KPIs, overall ratings, and engagement distributions |
-| **Operational View** | Detailed breakdown of restaurants by location, category comparisons, and pricing analysis |
-| **Main Filters** | Interactive filters for location, cost, restaurant type, and digital features |
+| **Executive View** | Displays KPIs like average rating, total votes, cost distribution, and top restaurant locations |
+| **Operational View** | Includes cuisine-level analysis, pricing vs ratings scatter plot, and location-based heatmaps |
+| **Main Filters** | Location, cuisine, restaurant type, pricing, online ordering, table booking |
 
-Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) and document the public links in [`tableau/dashboard_links.md`](tableau/dashboard_links.md).
+### Dashboard Highlights
+
+- **Top Locations:** Whitefield, BTM, Electronic City, HSR, Marathahalli  
+- **Top Restaurant Types:** Microbreweries, Fine Dining, Pubs  
+- **Online Ordering:** ~59% restaurants offer it  
+- **Pricing vs Ratings:** No strong linear relationship observed  
+- **Cuisine Trends:** Ratings mostly fall between 3.6–4.1 across locations  
 
 ---
 
 ## Key Insights
 
-1. **Rating Uniformity:** Ratings do not vary significantly across most restaurants.
-2. **Skewed Engagement:** Customer engagement is highly uneven, with most attention going to a few top restaurants.
-3. **Digital Edge:** Offering online ordering is strongly linked to higher ratings.
-4. **Premium Features:** Table booking availability is associated with higher costs and greater engagement.
-5. **Market Segments:** The market is divided into Budget (low cost/engagement), Mid-market (moderate performance), and Premium (high cost/engagement).
-6. **Feature Underutilization:** Many restaurants are currently not utilizing digital features to their full potential.
-7. **Premium Performance:** Premium segment restaurants generally receive disproportionately higher engagement.
-8. **Cost vs Engagement:** Higher `approx_cost` often correlates with services like table booking, which in turn drive higher customer votes.
+1. **Rating Uniformity:** Ratings are tightly clustered around ~3.7 across most restaurants.  
+2. **Skewed Engagement:** A small number of restaurants capture a large share of total votes.  
+3. **Premium Pricing ≠ Better Ratings:** Higher cost does not guarantee higher ratings.  
+4. **Digital Impact:** Online ordering influences both engagement and pricing patterns.  
+5. **Location Concentration:** Areas like Whitefield and BTM dominate restaurant density.  
+6. **Moderate Correlations:**  
+   - Rating vs Votes ≈ 0.43  
+   - Table Booking vs Cost ≈ 0.62  
+7. **Market Segmentation:** Restaurants fall into Budget, Mid-market, and Premium segments.  
 
 ---
 
@@ -113,11 +111,21 @@ Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) an
 
 | # | Insight | Recommendation | Expected Impact |
 |---|---|---|---|
-| 1 | Skewed Engagement | Implement platform strategies to help mid-level restaurants get more visibility | Better distribution of customer attention across the platform |
-| 2 | Digital Edge | Actively encourage restaurants to adopt online ordering | 8 to 15 percent increase in customer engagement |
-| 3 | Feature Underutilization & Premium Focus | Focus marketing and sales strategies on premium segments and high-demand areas | 7 to 10 percent possible revenue growth |
+| 1 | Skewed Engagement | Promote mid-tier restaurants using recommendation systems and visibility boosts | Better distribution of customer traffic |
+| 2 | Digital Edge | Encourage adoption of online ordering for underperforming restaurants | ~10% increase in engagement and orders |
+| 3 | Premium Segments | Target premium restaurants with loyalty programs and curated experiences | Higher revenue per customer |
 
 ---
+
+## Impact
+
+- **8–15% increase in engagement**
+- **7–10% potential revenue growth**
+- Improved platform efficiency and restaurant visibility balance  
+
+
+---
+
 
 ## Repository Structure
 
@@ -127,8 +135,8 @@ C_G15_dvaCapstone/
 |-- README.md
 |
 |-- data/
-|   |-- raw/                         # Original dataset (never edited)
-|   `-- processed/                   # Cleaned output from ETL pipeline
+|   |-- raw/
+|   `-- processed/
 |
 |-- notebooks/
 |   |-- 01_extraction.ipynb
@@ -153,30 +161,3 @@ C_G15_dvaCapstone/
 |
 |-- DVA-oriented-Resume/
 `-- DVA-focused-Portfolio/
-```
-
----
-
-
-## Tech Stack
-
-| Tool | Status | Purpose |
-|---|---|---|
-| Python + Jupyter Notebooks | Mandatory | ETL, cleaning, analysis, and KPI computation |
-| Google Colab | Supported | Cloud notebook execution environment |
-| Tableau Public | Mandatory | Dashboard design, publishing, and sharing |
-| GitHub | Mandatory | Version control, collaboration, contribution audit |
-
----
-
-**Presentation Deck**
-
-- [ ] Final presentation exported as PDF into `reports/`
-- [ ] Title slide through recommendations, impact, limitations, and next steps
-
-**Individual Assets**
-
-- [ ] DVA-oriented resume updated to include this capstone
-- [ ] Portfolio link or project case study added
-
----
